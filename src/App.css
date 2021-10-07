@@ -10,6 +10,7 @@
   --text-color: black;
 
   min-height: 100vh;
+  min-width: 100vw;
 
   background: url('./images/pexels-pixabay-326311.jpg') no-repeat center/cover;
   /* background-color: var(--background); */
@@ -30,10 +31,13 @@
   background-size: 100% 100%;
   cursor: pointer;
 
-  transition: .3s;
-}
-.display-form:hover {
-  
+  -webkit-tap-highlight-color:transparent;
+  -moz-tap-highlight-color:transparent;
+  -o-tap-highlight-color:transparent;
+  tap-highlight-color:transparent;
+
+
+  transition: .4s;
 }
 .display-form.display-form--none {
   transform: rotate(180deg);
@@ -120,6 +124,13 @@ input, textarea {
   background: rgb(197, 195, 195);
 }
 
+
+.notes {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
 .note {
   --normal: green;
   --special: rgb(202, 202, 52);
@@ -128,11 +139,11 @@ input, textarea {
   
   background: linear-gradient(to bottom right, palevioletred, rgba(216, 112, 147, 1));
   background-size: 100% 100%;
-  display: inline-block;
+  display: block;
   font-size: 1.1rem;
   margin: .3em; padding: 1em;
-  min-width: 264px; min-height: 264px;
-  box-shadow: 1px 1px 4px black;
+  min-width: 298px; min-height: 298px;
+  box-shadow: 2px 2px 10px black;
 }
 
 .note__cross {
@@ -151,6 +162,11 @@ input, textarea {
 }
 h3, p, .note div{
   margin-bottom: .5em;
+}
+h3, p {
+  overflow-wrap:break-word;
+  line-height: 1.2em;
+  width: 10em;
 }
 
 .note__type {

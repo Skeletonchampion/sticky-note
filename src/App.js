@@ -144,13 +144,13 @@ function Form ({
         <div className='title'>
           <label className='title__label'>Title</label>
           <input type='text' className='title__input'
-            onChange={handleTitleChange} required
+            onChange={handleTitleChange} required maxLength='25'
             ></input>
         </div>
         <div className='body'>
           <label className='body__label'>Description</label>
           <textarea className='body__textarea' cols='33' rows='5'
-            onChange={handleBodyChange}
+            onChange={handleBodyChange} maxLength='50'
             ></textarea>
         </div>
         <div className='time'>
@@ -191,7 +191,7 @@ function Note({notes, onRemoveNote}) {
   newNotes.sort((a, b) => a.noteTimeout - b.noteTimeout);
 
   return (
-    <div>
+    <div class='notes'>
       {newNotes.map(note => {
         let [s, m, h, d] = [
           note.noteTimeout%60,
@@ -210,7 +210,7 @@ function Note({notes, onRemoveNote}) {
 
         return (
           <div key={uniqid()} className='note'>
-            <h3>{note.title}<i className='note__cross' onClick={() => {onRemoveNote(note)}}></i></h3>
+            <h3>{note.title}</h3>
             <p className='note__body'>{note.body}</p>
             <div className={`note__type note__type--${note.type}`}>{note.type}</div>
             <div className='note__time'>Time:{' '}
@@ -223,7 +223,10 @@ function Note({notes, onRemoveNote}) {
               <span className='note__span--m'>{note.noteTimeout > 0 ? ((m < 10) ? `0${m}m` : `${m}m`) : '00'}</span>
               :
               <span className='note__span--s'>{note.noteTimeout > 0 ? ((s < 10) ? `0${s}s` : `${s}s`) : '00'}</span>
-              <div><span className='note__span--d'>{note.noteTimeout > 0 ? `${d}` : '0'} days left</span></div>
+              <div>
+                <span className='note__span--d'>{note.noteTimeout > 0 ? `${d}` : '0'} days left</span>
+                <i className='note__cross' onClick={() => {onRemoveNote(note)}}></i>
+              </div>
             </div>
           </div>
         )
