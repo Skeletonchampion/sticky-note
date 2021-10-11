@@ -78,6 +78,8 @@ input, textarea, select {
   border: none;
   outline: none;
   box-shadow: 2px 2px 3px #333;
+
+  resize: none;
 }
 input, textarea {
   padding: .5em 1em;

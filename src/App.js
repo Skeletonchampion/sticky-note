@@ -190,6 +190,16 @@ function Note({notes, onRemoveNote}) {
   const newNotes = [...notes];
   newNotes.sort((a, b) => a.noteTimeout - b.noteTimeout);
 
+  let smallestTimeOut;
+  let hour, min;
+  if(newNotes.length > 0) {
+    smallestTimeOut = newNotes[0].noteTimeout;
+    hour = Math.floor(smallestTimeOut/60/60)%9999;
+    min = Math.floor(smallestTimeOut/60)%60;
+  }
+
+  document.title = `${hour}h:${min < 10 ? `0${min}` : `${min}`}m`;
+
   return (
     <div class='notes'>
       {newNotes.map(note => {
